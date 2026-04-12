@@ -1,5 +1,5 @@
 
-const defaultModel = require("../../models/default");
+const productModel = require("../../controllers/admin-panel/product.controller");
 
 var slugify = require('slugify')
 
@@ -30,12 +30,12 @@ exports.create = async(request,response) => {
                 strict : true
             })
 
-            saveData.slug = await generateUniqueSlug(categoryModel, slug);
+            saveData.slug = await generateUniqueSlug(productModel, slug);
         }
     }
 
 
-    await defaultModel(saveData).save()
+    await productModel(saveData).save()
     .then((result) => {
         const data = {
         _status : true,

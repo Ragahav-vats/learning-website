@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
 
-     name: {
+  name: {
     type : String,
     default : '',
     required : [true,'Name is required'],
@@ -132,6 +132,42 @@ const productSchema = new mongoose.Schema({
     type : string,
     default : 1, // 1-yes, 2-No
     required : [true, 'Is React Native is required']
+  },
+
+  is_python : {
+    type : string,
+    default : 1, // 1-yes, 2-No
+    required : [true, 'Is Python is required']
+  },
+
+  is_machine_learning : {
+    type : string,
+    default : 1, // 1-yes, 2-No
+    required : [true, 'Is Machine Learning is required']
+  },
+
+  is_data_analysis : {
+    type : string,
+    default : 1, // 1-yes, 2-No
+    required : [true, 'Is Data Analysis is required']
+  },
+
+  is_ai : {
+    type : string,
+    default : 1, // 1-yes, 2-No
+    required : [true, 'Is AI is required']
+  },
+
+  is_deep_learning : {
+    type : string,
+    default : 1, // 1-yes, 2-No
+    required : [true, 'Is Deep Learning is required']
+  },
+
+  is_nlp : {
+    type : string,
+    default : 1, // 1-yes, 2-No
+    required : [true, 'Is NLP  is required']
   },
 
   created_at : {

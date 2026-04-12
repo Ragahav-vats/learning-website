@@ -23,15 +23,13 @@ server.get('/',(request,response) => {
 })
 
 // Admin URL
-
-require('./src/routes/admin-panel/default.routes')(server);
 require('./src/routes/admin-panel/product.routes')(server);
 
 // Application URL
 
 
 //Website URL
-
+require('./src/routes/website/user.routes.js')(server);
 
 
 

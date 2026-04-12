@@ -1,26 +1,16 @@
+const { type } = require('express/lib/response');
 const mongoose = require('mongoose');
 
-const defaultSchema = new mongoose.Schema({
-//     user_id : {
-//     type : String,
-//     required : [true, 'User Id is require' ],
-//     default : '',
-//     ref : 'users'
-//   },
+const userSchema = new mongoose.Schema({
+
   name: {
     type : String,
     default : '',
     required : [true,'Name is required'],
     match: /^[a-zA-Z ]{2,15}$/,
-    validate: {
-      validator: async function(v) {
-        const user = await this.constructor.findOne({ name: v, deleted_at : null });
-        return !user;
-      },
-      message: props => `The specified username is already in use.`
-}
   },
-   email: {
+
+  email: {
     type : String,
     default : '',
     required : [true,'Email is required'],
@@ -33,48 +23,85 @@ const defaultSchema = new mongoose.Schema({
       message: props => `The specified Email is already in use.`
 }
   },
+
   mobile_number : {
     type : Number,
     default : ''
   },
+
   password : {
     type : String,
     required :  [true,'password is required'],
     default : ''
   },
+
   address : {
     type : String,
     default : ''
   },
+
   gender : {
     type : String,
     default : ''
   },
+
   role_type : {
     type : String,
     enum : ['user','admin'],
-    required :  [true,'Role Type is required'],
+    // required :  [true,'Role Type is required'],
     default : 'user'
   },
+
   status : {
     type : Boolean,
     default : true
   },
+
+  actual_price : {
+    type : Number,
+    default : '',
+    required : [true, 'Actual price is required']
+  },
+
+  sale_price : {
+    type : Number,
+    default : '',
+    required : [true, 'Sale price is required']
+  },
+
+  short_description : {
+    type : String,
+    default : '',
+    required : [true, 'Short Description is required']
+  },
+
+  image : {
+    type : String,
+    default : ''
+  },
+
+    images : {
+    type : Array,
+    default : []
+  },
+
   created_at : {
     type : Date,
     default : Date.now()
   },
+
   updated_at : {
     type : Date,
     default : Date.now()
   },
+
   deleted_at :{
     type : Date,
     default : ''
   },
-  
+
 });
 
-const defaultModel = mongoose.model('defaults', defaultSchema);
+const userModel = mongoose.model('users', userSchema);
 
-module.exports = defaultModel;
+module.exports = userModel;
