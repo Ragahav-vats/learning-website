@@ -15,13 +15,13 @@ const userSchema = new mongoose.Schema({
     default : '',
     required : [true,'Email is required'],
     match: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,4}$/,
-    validate: {
-    validator: async function(v) {
-    const user = await this.constructor.findOne({ email: v, deleted_at : null, role_type: 'user' });
-        return !user;
-      },
-      message: props => `The specified Email is already in use.`
-}
+//     validate: {
+//     validator: async function(v) {
+//     const user = await this.constructor.findOne({ email: v, deleted_at : null, role_type: 'user' });
+//         return !user;
+//       },
+//       message: props => `The specified Email is already in use.`
+// }
   },
 
   mobile_number : {
@@ -57,23 +57,23 @@ const userSchema = new mongoose.Schema({
     default : true
   },
 
-  actual_price : {
-    type : Number,
-    default : '',
-    required : [true, 'Actual price is required']
-  },
+  // actual_price : {
+  //   type : Number,
+  //   default : '',
+  //   required : [true, 'Actual price is required']
+  // },
 
-  sale_price : {
-    type : Number,
-    default : '',
-    required : [true, 'Sale price is required']
-  },
+  // sale_price : {
+  //   type : Number,
+  //   default : '',
+  //   required : [true, 'Sale price is required']
+  // },
 
-  short_description : {
-    type : String,
-    default : '',
-    required : [true, 'Short Description is required']
-  },
+  // short_description : {
+  //   type : String,
+  //   default : '',
+  //   required : [true, 'Short Description is required']
+  // },
 
   image : {
     type : String,

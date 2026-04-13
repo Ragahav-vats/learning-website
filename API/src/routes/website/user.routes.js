@@ -1,6 +1,6 @@
 const express = require('express');
 const multer  = require('multer');
-const { register } = require('../../controllers/website/user.controller');
+const { register, login, changePassword, forgotPassword} = require('../../controllers/website/user.controller');
 const upload = multer({ dest: 'uploads/users' });
 
 
@@ -27,6 +27,9 @@ var router = express.Router();
     // const uploadMiddleware = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'images', maxCount: 8 }])
 
        router.post('/register', upload.none(),register);
+       router.post('/login', upload.none(),login);
+       router.put('/change-password', upload.none(),changePassword);
+       router.post('/forgot-password', upload.none(),forgotPassword);
     // router.post('/create', uploadMiddleware,create);
     // router.post('/view',upload.none(), view);
     // router.post('/details/:id',upload.none(), details);
