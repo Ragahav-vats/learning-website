@@ -40,6 +40,7 @@ exports.register = async(request,response) => {
     // }
 
     dataSave = request.body;
+    console.log(dataSave);
     dataSave.role_type = 'user';
     dataSave.password = await bcrypt.hash(request.body.password, saltRounds);
 
@@ -301,7 +302,7 @@ exports.resetPassword = async (request, response) => {
 
     const email = decoded.email;
 
-    const userInfo = await userModal.findOne({ email: email, deleted_at: null, role_type: 'user' });
+    const userInfo = await userModel.findOne({ email: email, deleted_at: null, role_type: 'user' });
 
     if(!userInfo){
         return response.send({ _status: false, _message: 'User not found', _data: null });
@@ -309,7 +310,7 @@ exports.resetPassword = async (request, response) => {
 
     const hashed = await bcrypt.hash(new_password, saltRounds);
 
-    await userModal.updateOne({ _id: userInfo._id }, { $set: { password: hashed } })
+    await userModel.updateOne({ _id: userInfo._id }, { $set: { password: hashed } })
     .then(() => {
         return response.send({ _status: true, _message: 'Password reset successfully', _data: null });
     })
