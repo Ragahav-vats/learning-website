@@ -81,7 +81,7 @@ const orderSchema = new mongoose.Schema({
     },
 
   address : {
-    type : String,
+    type : Object,
     default : ''
   },
 
